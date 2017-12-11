@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.cust.oa.domain">
+
+	<class name="Topic" table="cust_topic">
+		<id name="id">
+		    <generator class="native" />
+		</id>
+        <property name="title" />
+		<property name="content" type="text" length="65536" />
+		<property name="postTime" type="timestamp" />
+		<property name="ipAddr" />
+		<!-- author属性，本类与User多对一关系 -->
+		<many-to-one name="author" class="User" column="authorId" />
+        <property name="type" />
+		<property name="replyCount" />
+		<property name="lastUpdateTime" />
+		<!-- forum属性，本类与Forum多对一关系 -->
+		<many-to-one name="forum" class="Forum" column="forumId" />
+		<!-- replies属性，本类与Reply一对多关系 -->
+        <set name="replies" cascade="delete">
+            <key column="topicId"/>
+            <one-to-many class="Reply" />
+        </set>
+		<!-- lastReply属性，本类与Reply一对一关系 -->
+		<many-to-one name="lastReply" class="Reply" column="lastReplyId" unique="true" />
+	</class>
+	
+</hibernate-mapping>

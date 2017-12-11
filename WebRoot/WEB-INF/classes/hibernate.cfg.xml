@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+   <!-- "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">  -->
+   
+   <!-- 
+   19:26:26,229  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+   19:31:40,979  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+    -->
+   
+<hibernate-configuration>
+
+<session-factory>
+
+	<!-- 数据库连接配置 -->
+	<!--<property name="connection.driver_class">com.jdbc.mysql.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3308/myoa</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">123456</property>-->
+		
+	<property name="dialect">
+		org.hibernate.dialect.MySQL5InnoDBDialect
+	</property>
+
+	<!-- 其他配置 -->
+	<property name="show_sql">true</property>
+	<property name="hbm2ddl.auto">update</property>
+
+	<!-- 导入映射文件 -->
+	<mapping resource="cn/cust/oa/domain/Role.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/User.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/Department.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/Privilege.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/Forum.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/Topic.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/Reply.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/ApproveInfo.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/DocumentTemplate.hbm.xml" />
+	<mapping resource="cn/cust/oa/domain/Form.hbm.xml" />
+	
+    <mapping resource="jbpm.repository.hbm.xml" />
+    <mapping resource="jbpm.execution.hbm.xml" />
+    <mapping resource="jbpm.history.hbm.xml" />
+    <mapping resource="jbpm.task.hbm.xml" />
+    <mapping resource="jbpm.identity.hbm.xml" />
+</session-factory>
+
+</hibernate-configuration>

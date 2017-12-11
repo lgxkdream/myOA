@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.cust.oa.domain">
+
+	<class name="ApproveInfo" table="cust_approveInfo">
+		<id name="id">
+		    <generator class="native" />
+		</id>
+        <property name="approver" />
+		<property name="approveTime" type="timestamp" />
+		<property name="approval" />
+		<property name="comment" />
+        <!-- form属性，本类与Form多对一关系 -->
+        <many-to-one name="form" class="Form" column="formId" />
+	</class>
+	
+</hibernate-mapping>
